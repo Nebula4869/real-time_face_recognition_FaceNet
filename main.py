@@ -91,6 +91,7 @@ def realtime_recogniniton(group_name, face_size=1, track_interval=200, recogniti
             for face in os.listdir(db_dir):
                 known_face_names.append(face.replace(".", "_").split("_")[0])
                 img = cv2.imread(os.path.join(db_dir, face))
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 prewhitened = facenet.prewhiten(img)
                 image_list.append(prewhitened)
 
